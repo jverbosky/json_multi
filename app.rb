@@ -19,6 +19,11 @@ class PersonalDetailsJSONMultiApp < Sinatra::Base
     erb :get_more_info, locals: {name: name, age: age, n1: n1, n2: n2, n3: n3}
   end
 
+  get '/view_info' do
+    user_data = read_json()
+    "#{user_data}"
+  end
+
 end
 
 # Add functionality to view existing user data (table with links?)
