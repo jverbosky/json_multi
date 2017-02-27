@@ -1,11 +1,6 @@
+# Contents of existing JSON file:
+
 [
-  {
-    "user_name": "Abby",
-    "user_age": "20",
-    "num_1": "2",
-    "num_2": "4",
-    "num_3": "6"
-  },
   {
     "user_name": "Bobby",
     "user_age": "30",
