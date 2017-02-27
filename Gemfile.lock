@@ -1,5 +1,5 @@
 GEM
-  remote: https://rubygems.org/
+  remote: http://rubygems.org/
   specs:
     minitest (5.10.1)
     rack (1.6.5)
@@ -14,7 +14,7 @@ GEM
     tilt (2.0.6)
 
 PLATFORMS
-  ruby
+  x86-mingw32
 
 DEPENDENCIES
   minitest
@@ -22,5 +22,8 @@ DEPENDENCIES
   rack-test
   sinatra
 
+RUBY VERSION
+   ruby 2.3.3p222
+
 BUNDLED WITH
-   1.14.5
+   1.14.3
