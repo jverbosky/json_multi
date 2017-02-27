@@ -19,9 +19,15 @@ class PersonalDetailsJSONMultiApp < Sinatra::Base
     erb :get_more_info, locals: {name: name, age: age, n1: n1, n2: n2, n3: n3}
   end
 
-  get '/view_info' do
-    user_data = read_json()
-    "#{user_data}"
+  get '/list_users' do
+    names = get_names()
+    erb :view_users, locals: {names: names}
+  end
+
+  get '/user_info' do
+    name = params[:name]
+    user_hash = get_info(name)
+    erb :user_info, locals: {user_hash: user_hash}
   end
 
 end
