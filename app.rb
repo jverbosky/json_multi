@@ -26,4 +26,6 @@ class PersonalDetailsJSONMultiApp < Sinatra::Base
 
 end
 
-# Add functionality to view existing user data (table with links?)
+# Ideas:
+# 1) Add functionality to view existing user data (table with links?)
+# 2) Check json for hash with identical values and prompt if so
