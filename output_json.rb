@@ -10,3 +10,4 @@ end
 def read_json()
   json = JSON.parse(File.read('public/user.json'))  # read/copy the contents of the user.json file
 end
+
