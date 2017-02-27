@@ -4,11 +4,13 @@ require_relative 'output_json.rb'
 class PersonalDetailsJSONMultiApp < Sinatra::Base
 
   get "/" do
-    erb :get_info
+    feedback = ""
+    erb :get_info, locals: {feedback: feedback}
   end
 
   post '/post_info' do
     user_hash = params[:user]  # assign the user hash to the user_hash variable
+    feedback = check_values(user_hash)
     write_json(user_hash)  # save user_hash to a new JSON file (delete & re-create if already present)
     name = user_hash["user_name"]
     age = user_hash["user_age"]
@@ -16,7 +18,11 @@ class PersonalDetailsJSONMultiApp < Sinatra::Base
     n2 = user_hash["num_2"]
     n3 = user_hash["num_3"]
     # "Thanks for the info, #{backend_name}. You are #{backend_age} and your favorite numbers are #{one}, #{two} and #{three}." 
-    erb :get_more_info, locals: {name: name, age: age, n1: n1, n2: n2, n3: n3}
+    if feedback == ""
+      erb :get_more_info, locals: {name: name, age: age, n1: n1, n2: n2, n3: n3}
+    else
+      erb :get_info, locals: {feedback: feedback}
+    end
   end
 
   get '/list_users' do

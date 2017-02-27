@@ -5,10 +5,19 @@ def read_json()
   File.exist?('public/users.json') ? json = JSON.parse(File.read('public/users.json')) : json = []
 end
 
+def check_values(user_hash)
+  json = read_json()
+  flag = 0
+  feedback = ""
+  json.each { |users| users.each { |key, value| flag = 1 if value == user_hash["user_name"] } }
+  feedback = flag > 0 ? "We already have details for that person - please enter a different person." : ""
+end
+
 def write_json(user_hash)
   json = read_json()
+  feedback = check_values(user_hash)
   # append user_hash array to json data (existing or empty), then write beautified data to user.json
-  File.open("public/users.json","w") { |f| f.puts JSON.pretty_generate(json << user_hash) }
+  File.open("public/users.json","w") { |f| f.puts JSON.pretty_generate(json << user_hash) } if feedback == ""
 end
 
 def get_names()
