@@ -131,26 +131,5 @@
     "num_1": "5",
     "num_2": "3",
     "num_3": "6"
-  },
-  {
-    "user_name": "Stacey",
-    "user_age": "27",
-    "num_1": "6",
-    "num_2": "2",
-    "num_3": "9"
-  },
-  {
-    "user_name": "Carrie",
-    "user_age": "35",
-    "num_1": "6",
-    "num_2": "2",
-    "num_3": "4"
-  },
-  {
-    "user_name": "Ellie",
-    "user_age": "57",
-    "num_1": "54",
-    "num_2": "23",
-    "num_3": "13"
   }
 ]
