@@ -1,15 +1,25 @@
-<p><u>Select a user to view corresponding info:</u></p>
+<div>
 
-<!-- dynamic table to list all users in users.json -->
-<table>
-  <% count = 1 %>
-  <% names.each_slice(3).to_a.each do |group| %>
-    <tr>
-    <% group.each do |name| %>
-      <% url = "/user_info?name=" + name %>
-      <td width="150px"><p>User <%= count %>:<a href=<%= url %>><%= name %></a></p></td>
-      <% count += 1 %>
-    <% end %>
-    </tr>
-  <% end %>
-</table>
+  <div class="center-text">
+    <h4>Select a user to view corresponding info:</h4>
+  </div>
+
+  <div class="padding">
+    <!-- dynamic table to list all users in users.json -->
+    <table>
+      <% count = 1 %>
+      <% names.each_slice(3).to_a.each do |group| %>
+        <tr>
+        <% group.each do |name| %>
+          <% url = "/user_info?name=" + name %>
+          <td><p>User <%= count %>: &#160;<a href=<%= url %>><%= name %></a></p></td>
+          <% count += 1 %>
+        <% end %>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+
+  <hr>
+
+</div>

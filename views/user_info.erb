@@ -1,17 +1,29 @@
-<p><u>Here is the information for <%= user_hash["user_name"] %>:</u></p>
+<div>
 
-<table>
-  <tr><td width="150px"><b>Name: </b></td><td><%= user_hash["user_name"] %></td></tr>
-  <tr><td width="150px"><b>Age: </b></td><td><%= user_hash["user_age"] %></td></tr>
-  <tr><td width="150px"><b>Favorite Number 1: </b></td><td><%= user_hash["num_1"] %></td></tr>
-  <tr><td width="150px"><b>Favorite Number 2: </b></td><td><%= user_hash["num_2"] %></td></tr>
-  <tr><td width="150px"><b>Favorite Number 3: </b></td><td><%= user_hash["num_3"] %></td></tr>
-</table>
+  <div class="center-text">
+    <h4>Here is the information for <%= user_hash["user_name"] %>:</h4>
+  </div>
 
-<hr>
+  <div class="padding">
+    <table>
+      <tr><td><b>Name: </b></td><td><%= user_hash["user_name"] %></td></tr>
+      <tr><td><b>Age: </b></td><td><%= user_hash["user_age"] %></td></tr>
+      <tr><td><b>Favorite Number 1: </b></td><td><%= user_hash["num_1"] %></td></tr>
+      <tr><td><b>Favorite Number 2: </b></td><td><%= user_hash["num_2"] %></td></tr>
+      <tr><td><b>Favorite Number 3: </b></td><td><%= user_hash["num_3"] %></td></tr>
+    </table>
+  </div>
 
-<p><u>Please choose from the following:</u></p>
-<p><a href = "/">Enter info for someone else</a></p>
-<p><a href = "/list_users">View info for someone else</a></p>
+  <hr>
 
-<hr>
+  <div class="center-text">
+    <h4>What would you like to do next?</h4>
+    <div class="padding">
+      <p><a href = "/">Enter info for someone else</a></p>
+      <p><a href = "/list_users">View info for someone else</a></p>
+    </div>
+  </div>
+
+  <hr>
+
+</div>

@@ -9,16 +9,16 @@
     <link rel="icon" href="/images/favicon.ico?" type="image/x-icon">  <!-- # added to get favicon to load -->
   </head>
   <body>
-  <header>
-    <h1><a href="https://www.linkedin.com/in/johnverbosky" target="_blank">Personal Details</a></h1>
-  </header>
-  <section>
-  <div class="container-fluid">
-    <div class="center-block">
-      <hr>
-      <%= yield %>  <!-- load unique content from other .erb files -->
+    <header>
+      <a href="https://www.linkedin.com/in/johnverbosky" target="_blank"><h1>Personal Details</h1></a>
+    </header>
+    <section>
+    <div class="container-fluid">
+      <div class="center-block">
+        <hr>
+        <%= yield %>  <!-- load unique content from other .erb files -->
+      </div>
     </div>
-  </div>
-  </section>
+    </section>
   </body>
 </html>
