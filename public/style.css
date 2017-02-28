@@ -1,0 +1,19 @@
+div {
+  display: table;
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+h1 {
+  text-align: center;
+}
+
+td {
+  vertical-align: top;
+}
+
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

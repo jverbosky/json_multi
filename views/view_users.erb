@@ -1,14 +1,15 @@
 <p><u>Select a user to view corresponding info:</u></p>
 
 <!-- dynamic table to list all users in users.json -->
-<% count = 1 %>
-<% names.each do |name| %>
-  <% url = "/user_info?name=" + name %>
-  <table>
+<table>
+  <% count = 1 %>
+  <% names.each_slice(3).to_a.each do |group| %>
     <tr>
-      <td width="65px"><p>User <%= count %>: </td>
-      <td><a href=<%= url %>><%= name %></a></td>
+    <% group.each do |name| %>
+      <% url = "/user_info?name=" + name %>
+      <td width="150px"><p>User <%= count %>:<a href=<%= url %>><%= name %></a></p></td>
+      <% count += 1 %>
+    <% end %>
     </tr>
-  </table>
-  <% count += 1 %>
-<% end %>
+  <% end %>
+</table>
