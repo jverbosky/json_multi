@@ -37,18 +37,23 @@ def write_json(user_hash)
   File.open("public/users.json","w") { |f| f.puts JSON.pretty_generate(json << user_hash) } if feedback == ""
 end
 
+# Method to rearrange names for (top > down) then (left > right) column population
+def rotate_names(sorted)
+  quotient = sorted.count/3  # baseline for number of names per column
+  sorted.count % quotient > 0 ? remainder = 1 : remainder = 0  # remainder to ensure no names dropped
+  max_column_count = quotient + remainder  # add quotient & remainder to get max number of names per column
+  matrix = sorted.each_slice(max_column_count).to_a    # names divided into three (inner) arrays
+  results = matrix[0].zip(matrix[1], matrix[2]).flatten   # names rearranged (top > bottom) then (left > right) in table
+  results.each_index { |name| results[name] ||= "" }  # replace any nils (due to uneven .zip) with ""
+end
+
 # Method to return array of sorted/transposed names from JSON file for populating /list_users table
 def get_names()
   names = []
   json = read_json()
   json.each { |user_hash| names.push(user_hash["user_name"]) }
   sorted = names.sort  # sort names alphabetically
-  quotient = sorted.count/3  # baseline for number of names per column
-  sorted.count % quotient > 0 ? remainder = 1 : remainder = 0  # remainder to ensure no names dropped
-  max_column_count = quotient + remainder  # add quotient & remainder to get max number of names per column
-  matrix = sorted.each_slice(max_column_count).to_a    # names divided into three (inner) arrays
-  transposed_names = matrix[0].zip(matrix[1], matrix[2]).flatten   # names rearranged (top > bottom) then (left > right) in table
-  transposed_names.each_index { |name| transposed_names[name] ||= "" }  # replace any nils (due to uneven .zip) with ""
+  sorted = sorted.count > 3 ? rotate_names(sorted) : sorted  # rerrange names if more than 3 names, otherwise return sorted
 end
 
 # Method to return user hash from JSON file for specified user
