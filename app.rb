@@ -5,8 +5,13 @@ class PersonalDetailsJSONMultiApp < Sinatra::Base
 
   get "/" do
     feedback = ""  # placeholder in this route to avoid error message
+    name = ""
+    age = ""
+    n1 = ""
+    n2 = ""
+    n3 = ""
     # feedback is used in /post_info route, passing empty string to view to avoid error message
-    erb :get_info, locals: {feedback: feedback}
+    erb :get_info, locals: {feedback: feedback, name: name, age: age, n1: n1, n2: n2, n3: n3}
   end
 
   post '/post_info' do
@@ -24,7 +29,7 @@ class PersonalDetailsJSONMultiApp < Sinatra::Base
     if feedback == ""  # if there's no feedback on user already being in JSON
       erb :get_more_info, locals: {name: name, age: age, n1: n1, n2: n2, n3: n3}  # use the get_more_info view
     else
-      erb :get_info, locals: {feedback: feedback}  # otherwise reload the get_info view with feedback
+      erb :get_info, locals: {feedback: feedback, name: name, age: age, n1: n1, n2: n2, n3: n3}  # otherwise reload the get_info view with feedback
     end
   end
 

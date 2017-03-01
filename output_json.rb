@@ -6,8 +6,6 @@ def read_json()
   File.exist?('public/users.json') ? json = JSON.parse(File.read('public/users.json')) : json = []
 end
 
-
-
 # Method to determine if value is too long or if user in current user hash is already in JSON file
 def check_values(user_hash)
   json = read_json()
