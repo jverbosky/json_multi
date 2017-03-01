@@ -6,13 +6,29 @@ def read_json()
   File.exist?('public/users.json') ? json = JSON.parse(File.read('public/users.json')) : json = []
 end
 
-# Method to determine if user in current user hash is already in JSON file
+
+
+# Method to determine if value is too long or if user in current user hash is already in JSON file
 def check_values(user_hash)
   json = read_json()
   flag = 0
   feedback = ""
+  detail = ""
+  user_hash.each do |key, value|
+    flag = 2 if key == "user_age" && value.to_i > 120
+    (flag = 3; detail = key) if value.length > 20
+    flag = 4 if key == "user_name" && value =~ /[^a-zA-Z ]/
+    (flag = 5; detail = key) if key != "user_name" && value =~ /[^0-9.,]/
+  end
   json.each { |users| users.each { |key, value| flag = 1 if value == user_hash["user_name"] } }
-  feedback = flag > 0 ? "We already have details for that person - please enter a different person." : ""
+  case flag
+    when 1 then feedback = "We already have details for that person - please enter a different person."
+    when 2 then feedback = "I don't think you're really that old - please try again."
+    when 3 then feedback = "The value for '#{detail}' is too long - please try again with a shorter value."
+    when 4 then feedback = "Your name should only contain letters - please try again."
+    when 5 then feedback = "The value for '#{detail}' should only have numbers - please try again."
+  end
+  return feedback
 end
 
 # Method to add current user hash to JSON file
