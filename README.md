@@ -2,7 +2,7 @@
 
 1) Validates user details:
 
-- advises if the specified name is already in the JSON
+- advises if the specified name is already in the JSON file
 - advises it the specified age is impossibly high
 - advises if a field is too long (20+ characters)
 - advises if the specified name contains non-letter characters
