@@ -4,7 +4,7 @@ require_relative 'output_json.rb'
 class PersonalDetailsJSONMultiApp < Sinatra::Base
 
   get "/" do
-    feedback = ""  # placeholder in this route to avoid error message
+    feedback = ""  # placeholders in this route to avoid error message
     name = ""
     age = ""
     n1 = ""
@@ -23,13 +23,16 @@ class PersonalDetailsJSONMultiApp < Sinatra::Base
     n1 = user_hash["num_1"]  # favorite number 1 from the resulting hash
     n2 = user_hash["num_2"]  # favorite number 2 from the resulting hash
     n3 = user_hash["num_3"]  # favorite number 3 from the resulting hash
+    total = sum(n1, n2, n3)
+    comparison = compare(total, age)
     # test line to verify post info making it to this route:
-    # "Thanks for the info, #{backend_name}. You are #{backend_age} and your favorite numbers are #{one}, #{two} and #{three}." 
+    # "Thanks for the info, #{backend_name}. You are #{backend_age} and your favorite numbers are #{one}, #{two} and #{three}."
     # conditionally route depending on whether user name is already in JSON file or not
-    if feedback == ""  # if there's no feedback on user already being in JSON
-      erb :get_more_info, locals: {name: name, age: age, n1: n1, n2: n2, n3: n3}  # use the get_more_info view
+    if feedback == ""  # if there's no feedback on user already being in JSON, use the get_more_info view
+      erb :get_more_info, locals: {name: name, age: age, n1: n1, n2: n2, n3: n3, total: total, comparison: comparison}
     else
-      erb :get_info, locals: {feedback: feedback, name: name, age: age, n1: n1, n2: n2, n3: n3}  # otherwise reload the get_info view with feedback
+      # otherwise reload the get_info view with feedback and user-specified values so they can correct and resubmit
+      erb :get_info, locals: {feedback: feedback, name: name, age: age, n1: n1, n2: n2, n3: n3}
     end
   end
 

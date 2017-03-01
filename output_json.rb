@@ -58,3 +58,13 @@ def get_info(name)
   json.each { |user_hash| info = user_hash if name == user_hash["user_name"] }
   return info
 end
+
+# Method to return the sum of favorite numbers
+def sum(n1, n2, n3)
+  sum = n1.to_i + n2.to_i + n3.to_i
+end
+
+# Method to compare the sum of favorite numbers against the person's age
+def compare(sum, age)
+  comparison = (sum < age.to_i) ? "less" : "greater"
+end
