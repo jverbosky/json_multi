@@ -1,12 +1,11 @@
 **Personal Details (JSON)**
 
 1. Validates user details:
-
-- advises if the specified name is already in the JSON file
-- advises it the specified age is impossibly high
-- advises if a field is too long (20+ characters)
-- advises if the specified name contains non-letter characters
-- advises if a number has anything other than a digit, comma or dot
+	- advises if the specified name is already in the JSON file
+	- advises it the specified age is impossibly high
+	- advises if a field is too long (20+ characters)
+	- advises if the specified name contains non-letter characters
+	- advises if a number has anything other than a digit, comma or dot
 
 2. If validation fails, user-specified details are retained in fields so the user can correct and re-submit.
 
